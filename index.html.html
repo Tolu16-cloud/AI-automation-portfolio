@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Toluwalope Oluwasegun is an AI Automation Specialist building practical workflows, AI agents, and business process automations.">
+  <meta property="og:title" content="Toluwalope Oluwasegun | AI Automation Specialist">
+  <meta property="og:description" content="Practical AI automation, workflow design, and business process improvement.">
+  <meta property="og:type" content="website">
+  <title>Toluwalope Oluwasegun | AI Automation Specialist</title>
+  <style>
+    /* -------------------------------------------------------
+       EDITABLE DESIGN TOKENS
+       Change these values to adjust the site's overall look.
+    -------------------------------------------------------- */
+    :root {
+      color-scheme: dark;
+      --bg: #0b1020;
+      --surface: #111a2d;
+      --surface-raised: #162239;
+      --text: #f3f6fc;
+      --muted: #a9b6ca;
+      --line: rgba(187, 205, 232, .15);
+      --accent: #71e5d0;
+      --accent-2: #8ab4ff;
+      --accent-ink: #071a20;
+      --max-width: 1120px;
+      --radius: 20px;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .22);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 85% 0%, rgba(62, 108, 171, .16), transparent 36rem),
+        radial-gradient(ellipse at 0% 30%, rgba(49, 169, 155, .07), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button, input, textarea { font: inherit; }
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 3px solid var(--accent); outline-offset: 4px;
+    }
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+    .container { width: min(var(--max-width), calc(100% - 40px)); margin-inline: auto; }
+    .skip-link {
+      position: absolute; left: 12px; top: -60px; z-index: 1000;
+      padding: 10px 14px; background: var(--accent); color: var(--accent-ink); border-radius: 8px;
+    }
+    .skip-link:focus { top: 12px; }
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(11, 16, 32, .86); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-wrap { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 750; letter-spacing: -.03em; }
+    .brand-mark {
+      width: 36px; height: 36px; display: grid; place-items: center; border-radius: 11px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #07131e; font-weight: 900;
+    }
+    .brand small { display: block; color: var(--muted); font-size: .72rem; font-weight: 500; letter-spacing: .04em; }
+    .nav-links { display: flex; align-items: center; gap: 25px; }
+    .nav-links a { color: var(--muted); font-size: .9rem; text-decoration: none; transition: color .2s ease; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links .nav-contact { color: var(--accent); }
+    .menu-toggle {
+      display: none; border: 1px solid var(--line); background: var(--surface); color: var(--text);
+      padding: 8px 12px; border-radius: 10px; cursor: pointer;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px; color: var(--accent);
+      text-transform: uppercase; letter-spacing: .15em; font-size: .76rem; font-weight: 800;
+    }
+    .eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+    .hero { padding: 92px 0 86px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(270px, .65fr); gap: 65px; align-items: center; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin: 20px 0 20px; font-size: clamp(2.7rem, 6vw, 5.2rem); line-height: 1.04; letter-spacing: -.065em; max-width: 800px; }
+    h1 .highlight { color: var(--accent); }
+    .hero-lead { max-width: 660px; color: var(--muted); font-size: clamp(1.05rem, 1.6vw, 1.2rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button {
+      min-height: 47px; display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 12px 18px; border: 1px solid transparent; border-radius: 12px;
+      font-weight: 750; text-decoration: none; cursor: pointer; transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--accent); color: var(--accent-ink); }
+    .button-secondary { background: rgba(255,255,255,.025); border-color: var(--line); color: var(--text); }
+    .button-secondary:hover { border-color: rgba(113,229,208,.55); }
+    .hero-note { margin: 22px 0 0; color: var(--muted); font-size: .87rem; }
+    .hero-note strong { color: var(--text); font-weight: 650; }
+    .portrait-frame {
+      position: relative; max-width: 350px; margin-inline: auto; padding: 12px;
+      border: 1px solid rgba(138,180,255,.3); border-radius: 28px;
+      background: linear-gradient(145deg, rgba(113,229,208,.1), rgba(138,180,255,.05));
+      box-shadow: var(--shadow);
+    }
+    .portrait {
+      min-height: 370px; width: 100%; border-radius: 19px; object-fit: cover;
+      background: linear-gradient(150deg, #1a2b45, #111827); border: 1px solid var(--line);
+    }
+    .photo-placeholder {
+      min-height: 370px; display: grid; place-items: center; text-align: center; padding: 25px;
+      border-radius: 19px; border: 1px dashed rgba(169,182,202,.45);
+      background: radial-gradient(circle at 50% 30%, rgba(113,229,208,.11), transparent 55%), #111a2d;
+    }
+    .photo-placeholder .initials { font-size: 3.8rem; line-height: 1; letter-spacing: -.08em; color: var(--accent); font-weight: 800; }
+    .photo-placeholder p { max-width: 210px; color: var(--muted); font-size: .85rem; margin: 14px 0 0; }
+    .photo-caption {
+      position: absolute; left: -20px; bottom: 28px; padding: 12px 16px; max-width: 225px;
+      border: 1px solid var(--line); border-radius: 14px; background: #121d30; box-shadow: var(--shadow);
+      font-size: .82rem; color: var(--muted);
+    }
+    .photo-caption strong { display: block; color: var(--text); font-size: .93rem; }
+    .section { padding: 88px 0; border-top: 1px solid var(--line); }
+    .section-heading { max-width: 720px; margin-bottom: 38px; }
+    .section-heading h2 { margin: 12px 0 12px; font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -.05em; line-height: 1.13; }
+    .section-heading p { color: var(--muted); margin-bottom: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 44px; align-items: start; }
+    .about-copy { color: var(--muted); font-size: 1.05rem; }
+    .about-copy strong { color: var(--text); }
+    .principles { display: grid; gap: 12px; }
+    .principle { padding: 18px; background: rgba(255,255,255,.025); border: 1px solid var(--line); border-radius: 15px; }
+    .principle h3 { margin: 0 0 4px; font-size: 1rem; }
+    .principle p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .project-card {
+      display: flex; flex-direction: column; min-width: 0; padding: 24px;
+      background: linear-gradient(150deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+      border: 1px solid var(--line); border-radius: var(--radius); transition: border-color .2s ease, transform .2s ease;
+    }
+    .project-card:hover { border-color: rgba(113,229,208,.35); transform: translateY(-3px); }
+    .project-top { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
+    .project-icon {
+      flex: 0 0 46px; width: 46px; height: 46px; display: grid; place-items: center;
+      border: 1px solid rgba(113,229,208,.2); border-radius: 13px; background: rgba(113,229,208,.08); color: var(--accent);
+    }
+    .project-number { color: #73829b; font-size: .8rem; font-weight: 750; letter-spacing: .1em; }
+    .project-card h3 { margin: 18px 0 9px; font-size: 1.3rem; line-height: 1.3; letter-spacing: -.025em; }
+    .project-card > p { color: var(--muted); font-size: .94rem; margin-bottom: 18px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 20px; padding: 0; list-style: none; }
+    .tags li { padding: 5px 9px; border: 1px solid var(--line); border-radius: 999px; color: #c3d0e3; font-size: .75rem; }
+    .project-actions { margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .text-button { display: inline-flex; align-items: center; gap: 8px; padding: 8px 0; background: none; border: 0; color: var(--accent); font-weight: 750; cursor: pointer; }
+    .text-button:hover { color: var(--text); }
+    .case-study {
+      margin-top: 20px; padding-top: 19px; border-top: 1px solid var(--line);
+      color: var(--muted); font-size: .9rem;
+    }
+    .case-study[hidden] { display: none; }
+    .case-study h4 { margin: 17px 0 5px; color: var(--text); font-size: .93rem; }
+    .case-study h4:first-child { margin-top: 0; }
+    .case-study p { margin-bottom: 8px; }
+    .case-study ul { padding-left: 20px; margin: 5px 0 12px; }
+    .media-placeholder {
+      min-height: 100px; display: grid; place-items: center; text-align: center; padding: 15px; margin-top: 13px;
+      border: 1px dashed rgba(169,182,202,.35); border-radius: 12px; background: rgba(0,0,0,.12); color: #91a2bb; font-size: .8rem;
+    }
+    .media-placeholder img { width: 100%; height: auto; border-radius: 8px; }
+    .skills-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+    .skill-group { padding: 23px; border: 1px solid var(--line); border-radius: 17px; background: rgba(255,255,255,.025); }
+    .skill-group h3 { display: flex; align-items: center; gap: 10px; font-size: 1.04rem; margin-bottom: 15px; }
+    .skill-group h3 span { color: var(--accent); font-size: 1.15rem; }
+    .skill-group .tags { margin-bottom: 0; }
+    .skill-note { color: var(--muted); font-size: .86rem; margin: 22px 0 0; }
+    .workflow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; counter-reset: step; }
+    .workflow-step { position: relative; padding: 22px 17px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.025); }
+    .workflow-step::before { counter-increment: step; content: "0" counter(step); display: block; color: var(--accent); font-size: .8rem; font-weight: 850; letter-spacing: .1em; margin-bottom: 20px; }
+    .workflow-step h3 { font-size: .98rem; line-height: 1.35; margin-bottom: 8px; }
+    .workflow-step p { color: var(--muted); font-size: .83rem; margin-bottom: 0; }
+    .training-panel {
+      display: grid; grid-template-columns: .8fr 1.2fr; gap: 30px; padding: 28px;
+      border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.025);
+    }
+    .training-panel h3 { margin-bottom: 7px; }
+    .training-panel p { color: var(--muted); margin-bottom: 0; font-size: .92rem; }
+    .editable-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+    .editable-list li { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; }
+    .editable-list strong { display: block; }
+    .editable-list span { display: block; color: var(--muted); font-size: .85rem; }
+    .contact-panel {
+      display: grid; grid-template-columns: 1fr .8fr; gap: 38px; align-items: center; padding: clamp(25px, 5vw, 50px);
+      border: 1px solid rgba(113,229,208,.23); border-radius: 25px;
+      background: radial-gradient(ellipse at 100% 0%, rgba(113,229,208,.1), transparent 45%), var(--surface);
+    }
+    .contact-panel h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -.05em; margin: 12px 0; }
+    .contact-panel p { color: var(--muted); }
+    .contact-links { display: grid; gap: 11px; }
+    .contact-link { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 15px 16px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; }
+    .contact-link:hover { border-color: rgba(113,229,208,.5); }
+    .contact-link span { color: var(--muted); font-size: .82rem; display: block; }
+    .contact-link strong { overflow-wrap: anywhere; }
+    .site-footer { padding: 28px 0; color: var(--muted); font-size: .84rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+    .footer-inner p { margin: 0; }
+    .back-top { color: var(--accent); text-decoration: none; }
+    .small-note { color: var(--muted); font-size: .8rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    @media (max-width: 850px) {
+      .hero { padding-top: 68px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .portrait-frame { width: min(100%, 330px); }
+      .photo-caption { left: -10px; }
+      .about-grid, .contact-panel, .training-panel { grid-template-columns: 1fr; }
+      .workflow { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .workflow-step:last-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(var(--max-width), calc(100% - 28px)); }
+      .nav-wrap { min-height: 68px; }
+      .menu-toggle { display: inline-flex; }
+      .nav-links {
+        display: none; position: absolute; left: 14px; right: 14px; top: calc(100% + 8px);
+        flex-direction: column; align-items: stretch; gap: 0; padding: 8px;
+        background: #111a2d; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+      }
+      .nav-links.is-open { display: flex; }
+      .nav-links a { padding: 12px; border-radius: 8px; }
+      .nav-links a:hover { background: rgba(255,255,255,.05); }
+      .hero { padding: 55px 0 65px; }
+      .section { padding: 66px 0; }
+      .project-grid, .skills-grid { grid-template-columns: 1fr; }
+      .project-card { padding: 20px; }
+      .workflow { grid-template-columns: 1fr; }
+      .workflow-step:last-child { grid-column: auto; }
+      .workflow-step { padding: 18px; }
+      .workflow-step::before { margin-bottom: 10px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+      h1 { font-size: clamp(2.55rem, 13vw, 4rem); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Toluwalope Oluwasegun, home">
+        <span class="brand-mark" aria-hidden="true">T</span>
+        <span>Toluwalope Oluwasegun<small>AI Automation Specialist</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="menu-label">Menu</span>
+      </button>
+      <nav class="nav-links" id="primary-navigation" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#training">Training</a>
+        <a class="nav-contact" href="#contact">Contact ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO: Replace the photo placeholder below with your own image when ready. -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">AI automation · Workflow design</span>
+          <h1>I turn repetitive work into <span class="highlight">practical systems.</span></h1>
+          <p class="hero-lead">I'm Toluwalope Oluwasegun, an AI Automation Specialist building workflows and AI agents that help make everyday business processes more organised, consistent, and easier to manage.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">Explore my projects <span aria-hidden="true">↘</span></a>
+            <a class="button button-secondary" href="#contact">Get in touch</a>
+          </div>
+          <p class="hero-note"><strong>My approach:</strong> understand the problem first, then choose the right tools.</p>
+        </div>
+
+        <div class="portrait-frame">
+          <!-- To add your photo: replace the photo-placeholder div with:
+          <img class="portrait" src="images/toluwalope.jpg" alt="Portrait of Toluwalope Oluwasegun" width="700" height="850">
+          Keep the image file inside an images folder next to index.html. -->
+          <div class="photo-placeholder" role="img" aria-label="Placeholder for Toluwalope's professional photograph">
+            <div>
+              <div class="initials" aria-hidden="true">TO</div>
+              <p>Professional photo placeholder<br>Replace this area with your own portrait.</p>
+            </div>
+          </div>
+          <div class="photo-caption"><strong>AI Automation Specialist</strong>Workflow automation · AI agents · Process integration</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">A little about me</span>
+          <h2>Useful automation starts with understanding people and processes.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>I'm an AI Automation Specialist focused on building practical workflows, AI agents, and connected systems that reduce repetitive tasks and improve business processes.</p>
+            <p>My projects explore workflow automation, AI-assisted screening, lead qualification, information retrieval, automated notifications, and data handling across tools such as n8n, Google Sheets, Telegram, and Pinecone.</p>
+            <p>I approach each build by understanding the problem, mapping the process, choosing suitable tools, and testing the workflow carefully. My goal is to create automations that are useful, reliable, easy to understand, and straightforward to maintain.</p>
+          </div>
+          <div class="principles" aria-label="Working principles">
+            <article class="principle"><h3>Practical over complicated</h3><p>Use the simplest suitable approach to solve the actual problem.</p></article>
+            <article class="principle"><h3>Test before trusting</h3><p>Check important paths, edge cases, and outputs before relying on a workflow.</p></article>
+            <article class="principle"><h3>Built to be understood</h3><p>Keep workflows clear and document what a future user needs to know.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Selected work</span>
+          <h2>Projects built around real workflow problems.</h2>
+          <p>Explore the problem, approach, tools, and core features behind each project. Add screenshots and repository links as you prepare them.</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-top"><span class="project-icon" aria-hidden="true">◎</span><span class="project-number">PROJECT 01</span></div>
+            <h3>Attendance Tracking Automation</h3>
+            <p>A workflow for recording class attendance, calculating attendance rates, and identifying students who may need management review.</p>
+            <ul class="tags" aria-label="Tools used"><li>n8n</li><li>Google Sheets</li></ul>
+            <div class="project-actions"><button class="text-button case-toggle" type="button" aria-expanded="false">View case study <span aria-hidden="true">＋</span></button><a class="text-button repo-link" href="#contact" aria-label="Ask about the Attendance Tracking Automation repository">Repository placeholder ↗</a></div>
+            <div class="case-study" hidden>
+              <h4>Problem</h4><p>Attendance records need to be organised consistently, with clear visibility into attendance percentages and repeated absences.</p>
+              <h4>Solution</h4><p>A workflow using n8n and Google Sheets to capture attendance and calculate useful student-level summaries.</p>
+              <h4>Key features</h4><ul><li>Record student attendance and class details.</li><li>Calculate attendance percentages and absence counts.</li><li>Identify consecutive absences for follow-up.</li><li>Flag records for management review against the configured attendance rule.</li></ul>
+              <h4>Workflow summary</h4><p>Attendance input → Google Sheets records → attendance calculations → absence checks → review or notification.</p>
+              <p class="small-note">Status note: a prototype workflow has been built and tested with sample records. Confirm the exact live deployment status before describing it as production-ready.</p>
+              <div class="media-placeholder">Screenshot or n8n workflow diagram placeholder. Add a genuine image here when available.</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top"><span class="project-icon" aria-hidden="true">⌂</span><span class="project-number">PROJECT 02</span></div>
+            <h3>Real Estate Lead Management</h3>
+            <p>A lead-handling workflow that checks a prospect's available budget against qualification criteria and sends an email response when the criteria are not met.</p>
+            <ul class="tags" aria-label="Tools used"><li>Workflow automation</li><li>Email</li><li>Lead qualification</li></ul>
+            <div class="project-actions"><button class="text-button case-toggle" type="button" aria-expanded="false">View case study <span aria-hidden="true">＋</span></button><a class="text-button repo-link" href="#contact" aria-label="Ask about the Real Estate Lead Management repository">Repository placeholder ↗</a></div>
+            <div class="case-study" hidden>
+              <h4>Problem</h4><p>Manually reviewing every new lead can take time, especially when a minimum budget is required.</p>
+              <h4>Solution</h4><p>Collect lead details, compare the available budget with a defined threshold, and route the lead to the appropriate next step.</p>
+              <h4>Key features</h4><ul><li>Capture lead information.</li><li>Evaluate the budget against configured criteria.</li><li>Send an email to leads who do not qualify.</li><li>Keep qualification rules editable for the intended business.</li></ul>
+              <h4>Workflow summary</h4><p>Lead submission → budget check → qualified or not qualified → relevant follow-up.</p>
+              <p class="small-note">Confirm the exact tools, email provider, and test status before publishing those details.</p>
+              <div class="media-placeholder">Add a genuine workflow screenshot or sample email with personal details removed.</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top"><span class="project-icon" aria-hidden="true">◇</span><span class="project-number">PROJECT 03</span></div>
+            <h3>Fintech Loan Screening Automation</h3>
+            <p>A connected workflow designed to process loan application submissions, apply AI-assisted screening, and route information to the right records and notifications.</p>
+            <ul class="tags" aria-label="Tools used"><li>Forms</li><li>AI screening</li><li>Google Sheets</li><li>Slack</li><li>Email</li></ul>
+            <div class="project-actions"><button class="text-button case-toggle" type="button" aria-expanded="false">View case study <span aria-hidden="true">＋</span></button><a class="text-button repo-link" href="#contact" aria-label="Ask about the Fintech Loan Screening Automation repository">Repository placeholder ↗</a></div>
+            <div class="case-study" hidden>
+              <h4>Problem</h4><p>Loan application information may arrive through forms and require consistent review, record keeping, and team notification.</p>
+              <h4>Solution</h4><p>Connect form submission, AI-assisted screening, a Google Sheets record, Slack notification, and email into one workflow.</p>
+              <h4>Key features</h4><ul><li>Receive application data through a form.</li><li>Pass relevant information through a configured AI screening step.</li><li>Store application information in Google Sheets.</li><li>Notify the team through Slack and email.</li></ul>
+              <h4>Workflow summary</h4><p>Form → AI screening → record application → notify relevant people.</p>
+              <p class="small-note">AI screening should support, not replace, a responsible human review. Do not use this portfolio description to imply lending approval authority or compliance certification.</p>
+              <div class="media-placeholder">Add a redacted workflow diagram or sample test record here.</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top"><span class="project-icon" aria-hidden="true">✳</span><span class="project-number">PROJECT 04</span></div>
+            <h3>Telegram AI Student Assistant</h3>
+            <p>An AI assistant designed to answer student questions about a training school's website, courses, and related information through Telegram.</p>
+            <ul class="tags" aria-label="Tools used"><li>Telegram</li><li>AI agent</li><li>Website information</li></ul>
+            <div class="project-actions"><button class="text-button case-toggle" type="button" aria-expanded="false">View case study <span aria-hidden="true">＋</span></button><a class="text-button repo-link" href="#contact" aria-label="Ask about the Telegram AI Student Assistant repository">Repository placeholder ↗</a></div>
+            <div class="case-study" hidden>
+              <h4>Problem</h4><p>Students may need to search a website or ask staff for repeated information about courses and training.</p>
+              <h4>Solution</h4><p>A Telegram-based AI agent that responds to questions using relevant school and course information.</p>
+              <h4>Key features</h4><ul><li>Accept student questions through Telegram.</li><li>Use available website or course information to inform responses.</li><li>Provide a conversational way to find relevant information.</li></ul>
+              <h4>Workflow summary</h4><p>Student message → retrieve or reference relevant information → generate answer → reply in Telegram.</p>
+              <p class="small-note">Add details about the actual knowledge source, retrieval method, and testing once confirmed.</p>
+              <div class="media-placeholder">Add a screenshot of a sample conversation with private information removed.</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top"><span class="project-icon" aria-hidden="true">▤</span><span class="project-number">PROJECT 05</span></div>
+            <h3>School Registration Automation</h3>
+            <p>A registration workflow that processes submitted student information, records the details, and sends automated email messages.</p>
+            <ul class="tags" aria-label="Tools used"><li>Forms</li><li>Data capture</li><li>Email automation</li></ul>
+            <div class="project-actions"><button class="text-button case-toggle" type="button" aria-expanded="false">View case study <span aria-hidden="true">＋</span></button><a class="text-button repo-link" href="#contact" aria-label="Ask about the School Registration Automation repository">Repository placeholder ↗</a></div>
+            <div class="case-study" hidden>
+              <h4>Problem</h4><p>Registration can involve repeated data entry, manual record keeping, and sending similar messages to applicants.</p>
+              <h4>Solution</h4><p>Capture registration details, store the submitted information, and send the configured email communication.</p>
+              <h4>Key features</h4><ul><li>Receive student registration submissions.</li><li>Record submitted information in the chosen destination.</li><li>Send automated email messages.</li></ul>
+              <h4>Workflow summary</h4><p>Registration form → validate and record details → send email response.</p>
+              <p class="small-note">Confirm the exact form, data destination, and email provider before listing specific tools.</p>
+              <div class="media-placeholder">Add a screenshot of the workflow or a sample registration confirmation.</div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top"><span class="project-icon" aria-hidden="true">⌘</span><span class="project-number">PROJECT 06</span></div>
+            <h3>AI-Powered Food Vendor Assistant</h3>
+            <p>An AI agent using Pinecone to retrieve relevant product information and help food vendors prepare buying lists.</p>
+            <ul class="tags" aria-label="Tools used"><li>AI agent</li><li>Pinecone</li><li>Retrieval</li><li>Buying lists</li></ul>
+            <div class="project-actions"><button class="text-button case-toggle" type="button" aria-expanded="false">View case study <span aria-hidden="true">＋</span></button><a class="text-button repo-link" href="#contact" aria-label="Ask about the AI-Powered Food Vendor Assistant repository">Repository placeholder ↗</a></div>
+            <div class="case-study" hidden>
+              <h4>Problem</h4><p>Food vendors need to find relevant product information and turn their needs into a useful buying list.</p>
+              <h4>Solution</h4><p>An AI agent that uses Pinecone to retrieve relevant product information and assist with buying-list preparation.</p>
+              <h4>Key features</h4><ul><li>Retrieve relevant product information from a vector database.</li><li>Use retrieved context to help answer queries.</li><li>Assist with preparing a buying list based on the vendor's request.</li></ul>
+              <h4>Workflow summary</h4><p>Vendor request → retrieve relevant product context from Pinecone → AI response → buying-list assistance.</p>
+              <p class="small-note">Confirm the embedding model, source data, and retrieval setup before adding them to the public case study.</p>
+              <div class="media-placeholder">Add a screenshot of the retrieval flow or an example buying list.</div>
+            </div>
+          </article>
+        </div>
+        <p class="small-note" style="margin-top:20px">Project descriptions are based on the supplied project summaries. Add only tools, screenshots, repository links, and results you can verify. Remove any feature that is not yet implemented or tested.</p>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Skills & tools</span>
+          <h2>A toolkit organised around the work.</h2>
+          <p>These are skill areas and tools to showcase. Keep the list aligned with what you have personally used and can confidently discuss.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-group"><h3><span aria-hidden="true">↯</span> Workflow automation</h3><ul class="tags"><li>n8n</li><li>Make</li><li>Zapier</li></ul></article>
+          <article class="skill-group"><h3><span aria-hidden="true">✳</span> AI automation</h3><ul class="tags"><li>AI agents</li><li>Prompt engineering</li><li>Retrieval-augmented generation (RAG)</li></ul></article>
+          <article class="skill-group"><h3><span aria-hidden="true">⌘</span> Data & integrations</h3><ul class="tags"><li>Google Sheets</li><li>Google Forms</li><li>APIs</li><li>Pinecone / vector databases</li></ul></article>
+          <article class="skill-group"><h3><span aria-hidden="true">◈</span> Business processes</h3><ul class="tags"><li>Lead qualification</li><li>Attendance management</li><li>Registration workflows</li><li>Automated notifications</li></ul></article>
+        </div>
+        <p class="skill-note">Edit these labels to reflect your hands-on experience. A tool should not appear as a mastered skill simply because it is on this list.</p>
+      </div>
+    </section>
+
+    <section class="section" id="workflow">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">How I work</span>
+          <h2>Clear steps. Useful outcomes.</h2>
+          <p>A straightforward approach helps keep an automation understandable, testable, and maintainable.</p>
+        </div>
+        <div class="workflow">
+          <article class="workflow-step"><h3>Understand the problem</h3><p>Clarify the task, people involved, inputs, and desired outcome.</p></article>
+          <article class="workflow-step"><h3>Design the workflow</h3><p>Map the steps, decisions, tools, and possible exceptions.</p></article>
+          <article class="workflow-step"><h3>Build the automation</h3><p>Connect the required tools and configure the workflow logic.</p></article>
+          <article class="workflow-step"><h3>Test and troubleshoot</h3><p>Check expected paths, unusual inputs, and failure cases.</p></article>
+          <article class="workflow-step"><h3>Document and improve</h3><p>Explain how it works and identify sensible next improvements.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="training">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Learning & development</span>
+          <h2>Training and certifications.</h2>
+          <p>Use this section to show relevant training and professional development accurately.</p>
+        </div>
+        <div class="training-panel">
+          <div><h3>Keep this section current</h3><p>Add the issuing organisation, exact credential or programme name, and completion date. Do not list a course as a certification unless it was awarded as one.</p></div>
+          <ul class="editable-list">
+            <!-- Replace or duplicate these entries when you are ready to add verified credentials. -->
+            <li><strong>[Add verified training or certification]</strong><span>[Issuing organisation] · [Completion date]</span></li>
+            <li><strong>[Add relevant professional development]</strong><span>[Programme or course] · [Status or date]</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <span class="eyebrow">Let's connect</span>
+            <h2>Have a workflow worth improving?</h2>
+            <p>If you're hiring, exploring a collaboration, or looking for practical automation support, I'd be glad to connect.</p>
+            <a class="button button-primary" href="https://www.linkedin.com/in/toluwalope-oluwadunsin-oluwasegun" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a>
+          </div>
+          <div class="contact-links">
+            <a class="contact-link" href="https://www.linkedin.com/in/toluwalope-oluwadunsin-oluwasegun" target="_blank" rel="noopener noreferrer"><div><span>LinkedIn</span><strong>View my profile</strong></div><span aria-hidden="true">↗</span></a>
+            <!-- TODO: Replace YOUR_GITHUB_USERNAME with your actual GitHub username. -->
+            <a class="contact-link" href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener noreferrer" data-placeholder-link="github"><div><span>GitHub</span><strong>Add your profile URL</strong></div><span aria-hidden="true">↗</span></a>
+            <!-- TODO: Replace the email address below before publishing. -->
+            <a class="contact-link" href="mailto:your.email@example.com" data-placeholder-link="email"><div><span>Email</span><strong>your.email@example.com</strong></div><span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <p class="small-note" style="margin-top:14px">Email and GitHub are placeholders until you replace them. This page intentionally has no fake contact form; see the setup instructions to add a working form service if you need one.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="current-year">2026</span> Toluwalope Oluwasegun. Built with HTML, CSS, and JavaScript.</p>
+      <a class="back-top" href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation: open/close the menu and close it after choosing a section.
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('#primary-navigation');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      navigation.classList.toggle('is-open', !isOpen);
+      menuToggle.querySelector('.menu-label').textContent = isOpen ? 'Menu' : 'Close';
+    });
+
+    navigation.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navigation.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.querySelector('.menu-label').textContent = 'Menu';
+      });
+    });
+
+    // Project case studies: each button expands or collapses its own details.
+    document.querySelectorAll('.case-toggle').forEach((button) => {
+      button.addEventListener('click', () => {
+        const card = button.closest('.project-card');
+        const details = card.querySelector('.case-study');
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!isExpanded));
+        details.hidden = isExpanded;
+        button.innerHTML = isExpanded
+          ? 'View case study <span aria-hidden="true">＋</span>'
+          : 'Hide case study <span aria-hidden="true">−</span>';
+      });
+    });
+
+    // Keep the footer year current automatically.
+    document.querySelector('#current-year').textContent = new Date().getFullYear();
+
+    // Guard against accidentally publishing placeholder links.
+    // Replace the TODO URLs/text in the HTML before launch.
+    document.querySelectorAll('[data-placeholder-link]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const kind = link.dataset.placeholderLink;
+        const isPlaceholder = kind === 'github'
+          ? link.href.includes('YOUR_GITHUB_USERNAME')
+          : link.href.includes('your.email@example.com');
+        if (isPlaceholder) {
+          event.preventDefault();
+          alert(kind === 'github'
+            ? 'Add your real GitHub profile URL in index.html first.'
+            : 'Add your preferred professional email address in index.html first.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
