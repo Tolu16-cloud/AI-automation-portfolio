@@ -410,17 +410,17 @@
 
           <article class="project-card">
             <div class="project-top"><span class="project-icon" aria-hidden="true">⌘</span><span class="project-number">PROJECT 06</span></div>
-            <h3>AI-Powered Food Vendor Assistant</h3>
-            <p>An AI agent using Pinecone to retrieve relevant product information and help food vendors prepare buying lists.</p>
-            <ul class="tags" aria-label="Tools used"><li>AI agent</li><li>Pinecone</li><li>Retrieval</li><li>Buying lists</li></ul>
-            <div class="project-actions"><button class="text-button case-toggle" type="button" aria-expanded="false">View case study <span aria-hidden="true">＋</span></button><a class="text-button repo-link" href="#contact" aria-label="Ask about the AI-Powered Food Vendor Assistant repository">Repository placeholder ↗</a></div>
+            <h3>Telegram AI Food Ordering Assistant</h3>
+            <p>A Telegram-based AI assistant designed to help customers ask questions and work through a food order for Tasty and Sweet Food Place.</p>
+            <ul class="tags" aria-label="Tools used"><li>n8n</li><li>Telegram</li><li>Groq LLM</li><li>HTML extraction</li><li>Conversational AI</li></ul>
+            <div class="project-actions"><button class="text-button case-toggle" type="button" aria-expanded="false">View case study <span aria-hidden="true">＋</span></button><a class="text-button repo-link" href="#contact" aria-label="Ask about the Telegram AI Food Ordering Assistant repository">Repository placeholder ↗</a></div>
             <div class="case-study" hidden>
-              <h4>Problem</h4><p>Food vendors need to find relevant product information and turn their needs into a useful buying list.</p>
-              <h4>Solution</h4><p>An AI agent that uses Pinecone to retrieve relevant product information and assist with buying-list preparation.</p>
-              <h4>Key features</h4><ul><li>Retrieve relevant product information from a vector database.</li><li>Use retrieved context to help answer queries.</li><li>Assist with preparing a buying list based on the vendor's request.</li></ul>
-              <h4>Workflow summary</h4><p>Vendor request → retrieve relevant product context from Pinecone → AI response → buying-list assistance.</p>
-              <p class="small-note">Confirm the embedding model, source data, and retrieval setup before adding them to the public case study.</p>
-              <div class="media-placeholder">Add a screenshot of the retrieval flow or an example buying list.</div>
+              <h4>Problem</h4><p>Food businesses may need to respond to customer enquiries and collect complete order details consistently, without making unsupported promises about prices or payments.</p>
+              <h4>Solution</h4><p>An n8n workflow connects Telegram messages to an AI agent powered by Groq, then sends the agent's reply back to the customer in Telegram. The agent's instructions guide it to collect order details, summarize an order for customer approval, use only confirmed business information, and refer uncertain questions to the business owner.</p>
+              <h4>Implemented workflow components</h4><ul><li>Receive incoming Telegram messages.</li><li>Generate a conversational response with the AI agent and Groq chat model.</li><li>Connect a memory node to support conversational context.</li><li>Send the generated response back to the same Telegram chat.</li><li>A separate manual-trigger branch fetches a website and extracts its main page content; this branch is not connected to the Telegram agent in the supplied workflow.</li></ul>
+              <h4>Intended customer journey</h4><p>Customer message → AI-guided order conversation → order summary and customer approval → payment instructions and follow-up, with business-owner review where needed.</p>
+              <p class="small-note">The supplied workflow currently shows the Telegram conversation path and a separate website-extraction path. Payment verification, owner notifications, and order-status updates are described in the agent instructions but are not shown as connected automation nodes in this version.</p>
+              <div class="media-placeholder">Add a screenshot of the n8n workflow or a sample Telegram conversation with private details removed.</div>
             </div>
           </article>
         </div>
