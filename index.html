@@ -106,10 +106,19 @@
       background: linear-gradient(145deg, rgba(113,229,208,.1), rgba(138,180,255,.05));
       box-shadow: var(--shadow);
     }
-    .portrait {
-      min-height: 370px; width: 100%; border-radius: 19px; object-fit: cover;
-      background: linear-gradient(150deg, #1a2b45, #111827); border: 1px solid var(--line);
-    }
+    
+.portrait {
+  width: 180px;
+  height: 180px;
+  min-height: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  background: linear-gradient(150deg, #1a2b45, #111827);
+  border: 1px solid var(--line);
+}
+
     .photo-placeholder {
       min-height: 370px; display: grid; place-items: center; text-align: center; padding: 25px;
       border-radius: 19px; border: 1px dashed rgba(169,182,202,.45);
