@@ -360,16 +360,20 @@
           <article class="project-card">
             <div class="project-top"><span class="project-icon" aria-hidden="true">◎</span><span class="project-number">PROJECT 01</span></div>
             <h3>Attendance Tracking Automation</h3>
-            <p>A workflow for recording class attendance, calculating attendance rates, and identifying students who may need management review.</p>
+            <p>A student attendance automation built with n8n and Google Sheets. It records class attendance, calculates attendance percentages, tracks consecutive absences, and flags students who may require management review.</p>
             <ul class="tags" aria-label="Tools used"><li>n8n</li><li>Google Sheets</li></ul>
             <div class="project-actions"><button class="text-button case-toggle" type="button" aria-expanded="false">View case study <span aria-hidden="true">＋</span></button><a class="text-button repo-link" href="https://github.com/Tolu16-cloud/AI-automation-portfolio/blob/main/workflows/attendance-tracking-automation.json" target="_blank" rel="noopener noreferrer">View Workflow JSON ↗</a>
             <div class="case-study" hidden>
               <h4>Problem</h4><p>Attendance records need to be organised consistently, with clear visibility into attendance percentages and repeated absences.</p>
               <h4>Solution</h4><p>A workflow using n8n and Google Sheets to capture attendance and calculate useful student-level summaries.</p>
-              <h4>Key features</h4><ul><li>Record student attendance and class details.</li><li>Calculate attendance percentages and absence counts.</li><li>Identify consecutive absences for follow-up.</li><li>Flag records for management review against the configured attendance rule.</li></ul>
+              <h4>Key features</h4><ul><ul>
+  <li>Records student attendance and class details.</li>
+  <li>Calculates attendance percentages and total absences.</li>
+  <li>Detects consecutive absences for follow-up.</li>
+  <li>Flags students for management review based on attendance performance.</li>
+</ul>
               <h4>Workflow summary</h4><p>Attendance input → Google Sheets records → attendance calculations → absence checks → review or notification.</p>
-              <p class="small-note">Status note: a prototype workflow has been built and tested with sample records. Confirm the exact live deployment status before describing it as production-ready.</p>
-             <img
+             <p class="small-note">Project status: Prototype built and tested using sample attendance records.</p>
   src="attendance-tracking-scr.png"
   alt="Attendance Tracking Automation workflow built with n8n"
   class="project-screenshot"
