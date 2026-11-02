@@ -1,0 +1,772 @@
+{
+  "name": "Attendance tracking",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "CYBERVAST STUDENT ATTENDANCE FORM",
+        "formDescription": "To take record of absent student",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Instructor's name"
+            },
+            {
+              "fieldLabel": "Track",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "AI Automation"
+                  },
+                  {
+                    "option": "Virtual Assistant"
+                  },
+                  {
+                    "option": "UI/UX Design"
+                  },
+                  {
+                    "option": "Project management"
+                  },
+                  {
+                    "option": "Digital marketing"
+                  },
+                  {
+                    "option": "Front-end Development"
+                  },
+                  {
+                    "option": "Cybersecurity"
+                  },
+                  {
+                    "option": "Data analysis"
+                  }
+                ]
+              }
+            },
+            {
+              "fieldLabel": "Week",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Week 1"
+                  },
+                  {
+                    "option": "Week 2"
+                  },
+                  {
+                    "option": "Week 3"
+                  },
+                  {
+                    "option": "Week 4"
+                  },
+                  {
+                    "option": "Week 5"
+                  },
+                  {
+                    "option": "Week 6"
+                  },
+                  {
+                    "option": "Week 7"
+                  },
+                  {
+                    "option": "Week 8"
+                  },
+                  {
+                    "option": "Week 9"
+                  },
+                  {
+                    "option": "Week 10"
+                  },
+                  {
+                    "option": "Week 11"
+                  },
+                  {
+                    "option": "Week 12"
+                  }
+                ]
+              }
+            },
+            {
+              "fieldLabel": "Class e.g week 1 class 1, week 1 class 2",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Class 1"
+                  },
+                  {
+                    "option": "Class 2"
+                  },
+                  {
+                    "option": "Class 3"
+                  }
+                ]
+              }
+            },
+            {
+              "fieldLabel": "Date",
+              "fieldType": "date"
+            },
+            {
+              "fieldLabel": "Students Absent",
+              "fieldType": "textarea"
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        -176,
+        -144
+      ],
+      "id": "001a5776-8ba3-4c9f-85cb-75bfd732667f",
+      "name": "On form submission"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_YOUR_GOOGLE_SPREADSHEET_ID",
+          "mode": "list",
+          "cachedResultName": "Attendance Spreadsheet"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 776539265,
+          "mode": "list",
+          "cachedResultName": "Attendance Records"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "INSTRUCTOR": "={{ $json.Instructor }}",
+            "STATUS": "={{ $json.Status }}",
+            "CLASS": "={{ $json.Class }}",
+            "WEEK": "={{ $json.Week }}",
+            "DATE": "={{ $json.Date }}",
+            "TRACK": "={{ $json.Track }}",
+            "EMAIL": "={{ $json.Email }}",
+            "STUDENT NAME": "={{ $json['Full Name'] }}",
+            "STUDENT ID": "={{ $json['Student ID'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "STUDENT ID",
+              "displayName": "STUDENT ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "STUDENT NAME",
+              "displayName": "STUDENT NAME",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "EMAIL",
+              "displayName": "EMAIL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "TRACK",
+              "displayName": "TRACK",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "DATE",
+              "displayName": "DATE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "WEEK",
+              "displayName": "WEEK",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "CLASS",
+              "displayName": "CLASS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "STATUS",
+              "displayName": "STATUS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "INSTRUCTOR",
+              "displayName": "INSTRUCTOR",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        496,
+        -144
+      ],
+      "id": "ee61753b-7846-4e0c-9597-c4859c6c2b7a",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_YOUR_GOOGLE_SPREADSHEET_ID",
+          "mode": "list",
+          "cachedResultName": "Attendance Spreadsheet"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Track",
+              "lookupValue": "={{ $json.Track }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        48,
+        -144
+      ],
+      "id": "4d8cb3f5-5e6c-48fd-a7cc-b6a0c4a6134e",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the attendance information from the Form Trigger\nconst formData = $items(\"On form submission\")[0].json;\n\n// Get the students marked absent from the form\nconst absentStudents = String(formData[\"Students Absent\"] || \"\")\n  .split(\",\")\n  .map(name => name.trim().toLowerCase());\n\n// Get all students returned from Google Sheets\nconst students = $input.all();\n\n// Check each student\nreturn students.map(item => {\n\n  // Get the student's name from Google Sheets\n  const studentName = String(item.json[\"Full Name\"] || \"\")\n    .trim()\n    .toLowerCase();\n\n  // Check if the student's name is on the absent list\n  const isAbsent = absentStudents.includes(studentName);\n\n  // Add attendance information\n  item.json[\"Status\"] = isAbsent ? \"Absent\" : \"Present\";\n\n  // Add class information from the form\n  item.json[\"Date\"] = formData[\"Date\"];\n  item.json[\"Week\"] = formData[\"Week\"];\n  item.json[\"Class\"] = formData[\"Class e.g week 1 class 1, week 1 class 2\"];\n  item.json[\"Instructor\"] = formData[\"Instructor's name\"];\n\n  return item;\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        272,
+        -144
+      ],
+      "id": "5d9b2340-ce52-4291-b0d6-74b3e7544c0c",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_YOUR_GOOGLE_SPREADSHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 776539265,
+          "mode": "list",
+          "cachedResultName": "Attendance Records"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        720,
+        -144
+      ],
+      "id": "8da350fe-b06a-430e-979b-8457aa4ac7e9",
+      "name": "Get row(s) in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const records = $input.all();\n\n// Group records by student ID\nconst students = {};\n\nfor (const item of records) {\n  const data = item.json;\n\n  const studentId = String(data[\"STUDENT ID\"] || \"\").trim();\n\n  if (!studentId) continue;\n\n  if (!students[studentId]) {\n    students[studentId] = [];\n  }\n\n  students[studentId].push(data);\n}\n\nconst results = [];\n\n// Check each student's attendance records\nfor (const studentId in students) {\n\n  const attendance = students[studentId];\n\n  // We need at least 2 records\n  if (attendance.length < 2) continue;\n\n  // Look through consecutive records\n  for (let i = 1; i < attendance.length; i++) {\n\n    const previousStatus = String(\n      attendance[i - 1][\"STATUS\"] || \"\"\n    ).trim().toLowerCase();\n\n    const currentStatus = String(\n      attendance[i][\"STATUS\"] || \"\"\n    ).trim().toLowerCase();\n\n    // Check for two consecutive absences\n    if (\n      previousStatus === \"absent\" &&\n      currentStatus === \"absent\"\n    ) {\n\n      const student = attendance[i];\n\n      results.push({\n        json: {\n          \"STUDENT ID\": student[\"STUDENT ID\"],\n          \"STUDENT NAME\": student[\"STUDENT NAME\"],\n          \"EMAIL\": student[\"EMAIL\"],\n          \"TRACK\": student[\"TRACK\"],\n          \"Consecutive Absences\": 2,\n          \"Last Absence Date\": student[\"DATE\"]\n        }\n      });\n\n      // Stop checking this student after finding 2 absences\n      break;\n    }\n  }\n}\n\nreturn results;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        944,
+        -144
+      ],
+      "id": "4f460470-f2eb-4dc9-b5aa-9f19a9d6e0bf",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "21d6ee7e-10b9-4e22-9032-a228899b143f",
+              "leftValue": "={{ $json[\"Consecutive Absences\"] }}",
+              "rightValue": 2,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1168,
+        -144
+      ],
+      "id": "8c268e74-86fd-441d-8b01-de21dc56707d",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.EMAIL }}",
+        "subject": "Attendance Follow-up",
+        "emailType": "text",
+        "message": "=Hello {{ $json['STUDENT NAME'] }} ,      \nWe noticed that you have been absent from two consecutive classes.  We hope everything is okay. \nPlease let us know if there is any reason for your absence, and we encourage you to attend the upcoming classes.  \n\nRegular attendance is important for completing the programme successfully. \n\nThank you. \nCybervast Team ",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1392,
+        -144
+      ],
+      "id": "20f738b6-82dd-43cf-a480-0adf0dfe806c",
+      "name": "Send a message",
+      "credentials": {
+        "gmailOAuth2": {
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        -464
+      ],
+      "id": "2b4cc2a4-5d8f-4597-b43b-2f2b87b76a70",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_YOUR_GOOGLE_SPREADSHEET_ID",
+          "mode": "list",
+          "cachedResultName": "Attendance Spreadsheet"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 776539265,
+          "mode": "list",
+          "cachedResultName": "Attendance Records"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        48,
+        -464
+      ],
+      "id": "d87d6cc7-7dc4-4906-b2e7-badc6a5e0466",
+      "name": "Get row(s) in sheet2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const rows = $input.all();\n\nconst expectedClasses = {\n  \"VIRTUAL ASSISTANT\": 24,\n  \"UI/UX DESIGN\": 24,\n  \"PROJECT MANAGEMENT\": 24,\n  \"AI AUTOMATION\": 24,\n  \"DIGITAL MARKETING\": 24,\n  \"FRONT-END DEVELOPMENT\": 24,\n  \"DATA ANALYSIS\": 24,\n  \"CYBERSECURITY\": 36\n};\n\nconst students = {};\n\nfor (const item of rows) {\n  const data = item.json;\n\n  const studentId = data[\"STUDENT ID\"];\n  const studentName = data[\"STUDENT NAME\"];\n  const email = data[\"EMAIL\"];\n  const track = String(data[\"TRACK\"] || \"\").trim();\n  const status = String(data[\"STATUS\"] || \"\").trim().toUpperCase();\n\n  const key = studentId || email || studentName;\n\n  if (!key) continue;\n\n  if (!students[key]) {\n    students[key] = {\n      studentId,\n      studentName,\n      email,\n      track,\n      attended: 0,\n      absent: 0\n    };\n  }\n\n  if (status === \"PRESENT\") {\n    students[key].attended++;\n  } else if (status === \"ABSENT\") {\n    students[key].absent++;\n  }\n}\n\nreturn Object.values(students).map(student => {\n\n  const totalClasses =\n    expectedClasses[student.track.toUpperCase()] || 24;\n\n  const percentage =\n    (student.attended / totalClasses) * 100;\n\n  return {\n    json: {\n      \"STUDENT ID\": student.studentId,\n      \"STUDENT NAME\": student.studentName,\n      \"EMAIL\": student.email,\n      \"TRACK\": student.track,\n      \"TOTAL CLASSES\": totalClasses,\n      \"CLASSES ATTENDED\": student.attended,\n      \"CLASSES ABSENT\": student.absent,\n      \"ATTENDANCE PERCENTAGE\": Number(percentage.toFixed(2)),\n      \"ATTENDANCE RESULT\":\n        percentage >= 80\n          ? \"Meets attendance requirement\"\n          : \"Management review\"\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        272,
+        -368
+      ],
+      "id": "030ea64c-c54d-47fe-95a0-3ee84bd6eb97",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_YOUR_GOOGLE_SPREADSHEET_ID",
+          "mode": "list",
+          "cachedResultName": "Attendance Spreadsheet"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1164108161,
+          "mode": "list",
+          "cachedResultName": "Track Configuration"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        272,
+        -560
+      ],
+      "id": "e178d00e-2777-415a-8447-f84a4f441f03",
+      "name": "Get row(s) in sheet3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_YOUR_GOOGLE_SPREADSHEET_ID",
+          "mode": "list",
+          "cachedResultName": "Attendance Spreadsheet"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 809280733,
+          "mode": "list",
+          "cachedResultName": "Final Attendance Records "
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "STUDENT ID": "={{ $json['STUDENT ID'] }}",
+            "STUDENT NAME": "={{ $json['STUDENT NAME'] }}",
+            "EMAIL": "={{ $json.EMAIL }}",
+            "TRACK": "={{ $json.TRACK }}",
+            "ATTENDED": "={{ $json['CLASSES ATTENDED'] }}",
+            "TOTAL CLASSES": "={{ $json['TOTAL CLASSES'] }}",
+            "ABSENT": "={{ $json['CLASSES ABSENT'] }}",
+            "ATTENDANCE %": "={{ $json['ATTENDANCE PERCENTAGE'] }}",
+            "RESULT": "={{ $json['ATTENDANCE RESULT'] }}"
+          },
+          "matchingColumns": [
+            "STUDENT ID"
+          ],
+          "schema": [
+            {
+              "id": "STUDENT ID",
+              "displayName": "STUDENT ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "STUDENT NAME",
+              "displayName": "STUDENT NAME",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "EMAIL",
+              "displayName": "EMAIL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "TRACK",
+              "displayName": "TRACK",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "TOTAL CLASSES",
+              "displayName": "TOTAL CLASSES",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ATTENDED",
+              "displayName": "ATTENDED",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ABSENT",
+              "displayName": "ABSENT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ATTENDANCE %",
+              "displayName": "ATTENDANCE %",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "RESULT",
+              "displayName": "RESULT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        496,
+        -368
+      ],
+      "id": "ff86adae-0bbc-4ddd-8818-5967bf8357a5",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet2": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet3": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "da8e0304-41ce-45c4-8936-8dd83f1801fd",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "nodeGroups": [],
+  "tags": []
+}
