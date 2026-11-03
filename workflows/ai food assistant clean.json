@@ -1,0 +1,175 @@
+{
+  "updatedAt": "2026-10-23T04:26:12.040Z",
+  "createdAt": "2026-10-23T04:23:06.773Z",
+  "id": "YOUR_WORKFLOW_ID",
+  "name": "Telegram Food Business AI Agent",
+  "description": "AI-powered Telegram assistant for taking orders and managing food business communications.",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.5,
+      "position": [
+        -48,
+        304
+      ],
+      "id": "f393a32c-4ff9-4e1c-ba7c-2b3ffaa3d990",
+      "name": "Telegram Trigger",
+      "webhookId": "YOUR_WEBHOOK_ID",
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIAL_ID",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.text }}",
+        "options": {
+          "systemMessage": "You are a friendly, professional, and reliable AI assistant for a food business, \"Tasty and Sweet Food Place,\" on Telegram.\n\nYour Main Responsibilities\n\n1. Welcome customers and help them place orders.\n2. Collect the following information:\n   - Customer name\n   - Food item(s)\n   - Quantity\n   - Delivery address\n   - Phone number\n   - Preferred delivery time\n   - Special instructions, if any\n3. Summarize the order and ask the customer to confirm it.\n4. Provide the correct payment instructions provided by the business.\n5. Ask the customer to send proof of payment.\n6. Never claim that payment has been confirmed unless the payment has actually been verified.\n7. Send the order and payment information to the business owner for confirmation.\n8. Keep the customer updated through these stages:\n   - Order received\n   - Payment confirmed\n   - Order being prepared\n   - Order ready/out for delivery\n   - Order delivered\n\nImportant Rules\n\n- Only use information provided by the business owner or available in the business information/database.\n- Never invent prices, menu items, payment details, delivery fees, delivery areas, opening hours, or any other business information.\n- If you do not know an answer, politely tell the customer that you will refer the question to the business owner.\n- Do not make assumptions or guess missing information.\n- Do not confirm an order until the customer has approved the order summary.\n- Do not confirm payment based only on a customer's message or screenshot unless payment verification is available.\n- Do not change an order, price, or payment information without proper confirmation.\n- Protect the customer's personal information and only use it for processing the order.\n- If a request is outside your role, refer it to the business owner.\n\nCommunication Style\n\nBe polite, simple, clear, and conversational. Ask for information one step at a time instead of overwhelming the customer with many questions.\n\nYour goal is to help the customer place an accurate order, ensure the payment process is properly handled, notify the business owner, and keep the customer informed until the order is completed."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        224,
+        320
+      ],
+      "id": "50b65414-3ead-4dc5-9d3b-78aecf005fde",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        160,
+        592
+      ],
+      "id": "88fc7b3f-fe3c-447b-84c1-8ece7a50566b",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "YOUR_GROQ_CREDENTIAL_ID",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.message.text }}",
+        "contextWindowLength": 20
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        256,
+        464
+      ],
+      "id": "b01df215-9147-4983-aac9-63f12b9edae4",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        592,
+        352
+      ],
+      "id": "93965f7c-4360-4420-974a-23f837f55040",
+      "name": "Send a text message",
+      "webhookId": "YOUR_WEBHOOK_ID",
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIAL_ID",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "YOUR_VERSION_ID",
+  "activeVersionId": null,
+  "versionCounter": 4,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "shared": [],
+  "tags": [],
+  "parentFolder": null,
+  "activeVersion": null,
+  "scopes": [],
+  "checksum": "YOUR_CHECKSUM"
+}
