@@ -1,0 +1,82 @@
+{
+  "metadata": {
+    "version": "gdpr_v1"
+  },
+  "zaps": [
+    {
+      "id": 1000,
+      "title": "TECH VISION MAIN",
+      "status": "on",
+      "nodes": {
+        "1001": {
+          "id": 1001,
+          "paused": false,
+          "type_of": "read",
+          "params": {
+            "formId": "YOUR_GOOGLE_FORM_ID"
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {
+              "formId": "2026 TECH VISION"
+            }
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": null,
+          "root_id": null,
+          "action": "new_form_response",
+          "selected_api": "GoogleFormsCLIAPI@1.1.1",
+          "title": "TECH VISION MAIN"
+        },
+        "1002": {
+          "id": 1002,
+          "paused": true,
+          "type_of": "write",
+          "params": {
+            "body_type": "plain",
+            "render_signature_in_html": false,
+            "signature_delimiter": true,
+            "send_to_groups": false,
+            "to": [
+              "{{=output[\"1001\"][\"40914599\"]}}"
+            ],
+            "from": "YOUR_CONNECTED_EMAIL",
+            "from_name": "Tolu",
+            "reply_to": "{{=output[\"1001\"][\"342652f9\"]}}",
+            "subject": "WELCOME TO TECH VISION 2026",
+            "body": "\rHi {{=output[\"1001\"][\"342652f9\"]}},\r\n\r\nWelcome to Tech Vision 2026!\r\n\r\nThank you for registering for {{=output[\"1001\"][\"4957f88b\"]}}. We're excited to have you join us for an inspiring event filled with insightful sessions, networking opportunities, and the latest trends in technology and innovation.\r\n\r\nWe'll send you more updates and important information as the event approaches.\r\n\r\nIf you have any questions, simply reply to this email. We're happy to help.\r\n\r\nWe look forward to seeing you at Tech Vision 2026!\r\n\r\nBest regards,\r\n\r\nThe Tech Vision 2026 Team\r\n"
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {
+              "from": "YOUR_CONNECTED_EMAIL"
+            }
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": 1001,
+          "root_id": 1001,
+          "action": "message",
+          "selected_api": "GoogleMailV2CLIAPI@2.14.0"
+        }
+      }
+    }
+  ]
+}
