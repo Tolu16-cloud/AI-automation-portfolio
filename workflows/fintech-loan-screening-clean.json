@@ -1,0 +1,332 @@
+{
+  "metadata": {
+    "version": "gdpr_v1"
+  },
+  "zaps": [
+    {
+      "id": 1000,
+      "title": "FOR SURE BANK LOAN APPLICATION",
+      "status": "off",
+      "nodes": {
+        "1001": {
+          "id": 1001,
+          "paused": true,
+          "type_of": "read",
+          "params": {
+            "formId": "YOUR_GOOGLE_FORM_ID"
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {
+              "formId": "YOUR_GOOGLE_FORM_ID"
+            }
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": null,
+          "root_id": null,
+          "action": "new_form_response",
+          "selected_api": "GoogleFormsCLIAPI@1.1.1",
+          "title": "FOR SURE BANK LOAN APPLICATION"
+        },
+        "1002": {
+          "id": 1002,
+          "paused": true,
+          "type_of": "write",
+          "params": {
+            "model": "llama-3.3-70b-versatile",
+            "prompt": "You are an AI Loan Screening Assistant for a financial institution. Your responsibility is to perform an initial eligibility check on loan applications before they are reviewed by a loan officer.\n\nTask\n\nReview each loan application and determine whether the applicant is Eligible or Not Eligible based only on their employment status and monthly income.",
+            "system_prompt": "Context\n\nApplicants submit their information through a Google Form. The AI performs a preliminary screening to reduce manual work and speed up the loan application process.\n\nDecision Rules\n\nEligible if:\nEmployment Status = Employed or Self-Employed\nAND Monthly Income is between ₦50,000 and ₦500,000\n\nNot Eligible if:\nEmployment Status = Unemployed\nOR Monthly Income is between ₦0 and ₦50,000\nReturn the result in the following format:\n\nApplicant Status: Eligible OR  Not Eligible \n\nReason: Brief explanation for the decision.\n\n"
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {
+              "model": "llama-3.3-70b-versatile"
+            }
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": 1001,
+          "root_id": 1001,
+          "action": "send_prompt",
+          "selected_api": "App226699CLIAPI@1.2.0",
+          "title": null
+        },
+        "1003": {
+          "id": 1003,
+          "paused": true,
+          "type_of": "write",
+          "params": {},
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            }
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": 1002,
+          "root_id": 1001,
+          "action": "branch",
+          "selected_api": "BranchingAPI",
+          "title": null
+        },
+        "1004": {
+          "id": 1004,
+          "paused": true,
+          "type_of": "filter",
+          "params": {
+            "color": "Heroine Blue",
+            "emoji": "A",
+            "path_eval_index": 0,
+            "filter_criteria": [
+              {
+                "id": 2001,
+                "group": 2002,
+                "key": "{{=gives[\"1002\"][\"content\"]}}",
+                "value": "ELIGIBLE",
+                "match": "icontains",
+                "action": "continue"
+              }
+            ]
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "stepTitle": "ELIGIBLE"
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": 1003,
+          "root_id": 1001,
+          "action": "filter",
+          "selected_api": "BranchingAPI",
+          "title": "Path A"
+        },
+        "1005": {
+          "id": 1005,
+          "paused": true,
+          "type_of": "filter",
+          "params": {
+            "color": "Peru",
+            "emoji": "B",
+            "path_eval_index": 1,
+            "filter_criteria": [
+              {
+                "id": 2003,
+                "group": 2004,
+                "key": "{{=gives[\"1002\"][\"content\"]}}",
+                "value": "NOT ELIGIBLE",
+                "match": "icontains",
+                "action": "continue"
+              }
+            ]
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "stepTitle": "NOT ELIGIBLE"
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": 1003,
+          "root_id": 1001,
+          "action": "filter",
+          "selected_api": "BranchingAPI",
+          "title": "Path B"
+        },
+        "1006": {
+          "id": 1006,
+          "paused": true,
+          "type_of": "write",
+          "params": {
+            "body_type": "plain",
+            "render_signature_in_html": false,
+            "signature_delimiter": true,
+            "send_to_groups": false,
+            "to": [
+              "{{=gives[\"1001\"][\"0cf305b6\"]}}",
+              "{{=gives[\"1001\"][\"0719a692\"]}}"
+            ],
+            "from": "YOUR_CONNECTED_EMAIL",
+            "from_name": "FOR SURE BANK",
+            "subject": "Update on Your Loan Application",
+            "body": "Dear {{=gives[\"1001\"][\"0719a692\"]}}\n\nThank you for submitting your loan application.\n\nAfter reviewing the information you provided, we regret to inform you that you do not currently meet our minimum eligibility requirements for this loan.\n\nYou are welcome to apply again in the future if your circumstances change or you meet the eligibility criteria.\n\nThank you for your interest, and we wish you all the best.\n\nKind regards,\n\nThe Loan Processing Team\nFOR SURE BANK",
+            "reply_to": ""
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {
+              "from": "YOUR_CONNECTED_EMAIL"
+            }
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": 1005,
+          "root_id": 1001,
+          "action": "message",
+          "selected_api": "GoogleMailV2CLIAPI@2.14.0",
+          "title": null
+        },
+        "1007": {
+          "id": 1007,
+          "paused": true,
+          "type_of": "write",
+          "params": {
+            "timezone": false,
+            "drive": "",
+            "spreadsheet": "YOUR_GOOGLE_SHEET_ID",
+            "worksheet": "0",
+            "COL$A": "{{=gives[\"1001\"][\"0719a692\"]}}",
+            "COL$B": "{{=gives[\"1001\"][\"0cf305b6\"]}}",
+            "COL$C": "{{=gives[\"1001\"][\"154810ce\"]}}",
+            "COL$D": "{{=gives[\"1001\"][\"4b3e58ed\"]}}",
+            "COL$E": "{{=gives[\"1001\"][\"321c434b\"]}}",
+            "COL$F": "{{=gives[\"1001\"][\"0341b36a\"]}}"
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {
+              "drive": "My Google Drive",
+              "spreadsheet": "YOUR_GOOGLE_SHEET_ID",
+              "worksheet": "Sheet1"
+            }
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": 1004,
+          "root_id": 1001,
+          "action": "add_row",
+          "selected_api": "GoogleSheetsV2CLIAPI@2.17.3",
+          "title": null
+        },
+        "1008": {
+          "id": 1008,
+          "paused": true,
+          "type_of": "write",
+          "params": {
+            "add_app_to_channel": true,
+            "as_bot": false,
+            "add_edit_link": false,
+            "unfurl": false,
+            "link_names": false,
+            "reply_broadcast": true,
+            "text": "Hi Loan Officer,\n\nA new loan application has passed the initial AI eligibility screening.\n\nApplicant: {{=gives[\"1001\"][\"0719a692\"]}}\nEmployment Status: {{=gives[\"1001\"][\"4b3e58ed\"]}}\nMonthly Income: ₦{{=gives[\"1001\"][\"321c434b\"]}}\nStatus: ✅ Eligible\n\nPlease review the application and proceed with the next step in the loan approval",
+            "channel": "YOUR_SLACK_CHANNEL_ID"
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {
+              "channel": "YOUR_SLACK_CHANNEL_ID"
+            }
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": 1007,
+          "root_id": 1001,
+          "action": "channel_message",
+          "selected_api": "SlackCLIAPI@1.44.0",
+          "title": null
+        },
+        "1009": {
+          "id": 1009,
+          "paused": true,
+          "type_of": "write",
+          "params": {
+            "body_type": "plain",
+            "render_signature_in_html": false,
+            "signature_delimiter": true,
+            "send_to_groups": false,
+            "to": [
+              "{{=gives[\"1001\"][\"0cf305b6\"]}}"
+            ],
+            "from": "YOUR_CONNECTED_EMAIL",
+            "from_name": "FOR SURE BANK",
+            "body": "Dear {{=gives[\"1001\"][\"0719a692\"]}}\n\nThank you for submitting your loan application.\n\nWe're pleased to let you know that your application has successfully passed our initial eligibility screening and is now under review by one of our loan officers.\n\nWe'll contact you with an update as soon as the review is complete.\n\nThank you for choosing us.\n\nKind regards,\nThe Loan Processing Team",
+            "subject": "Your Loan Application Is Under Review"
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {
+              "from": "YOUR_CONNECTED_EMAIL"
+            }
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": 1008,
+          "root_id": 1001,
+          "action": "message",
+          "selected_api": "GoogleMailV2CLIAPI@2.14.0",
+          "title": null
+        }
+      }
+    }
+  ]
+}
