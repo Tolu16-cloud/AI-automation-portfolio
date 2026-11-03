@@ -674,106 +674,114 @@
       </div>
     </section>
 
-    <section class="section" id="training">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">Learning & development</span>
-          <h2>Training and certifications.</h2>
-          <p>Use this section to show relevant training and professional development accurately.</p>
-        </div>
-        <div class="training-panel">
-          <div><h3>Keep this section current</h3><p>Add the issuing organisation, exact credential or programme name, and completion date. Do not list a course as a certification unless it was awarded as one.</p></div>
-          <ul class="editable-list">
-            <!-- Replace or duplicate these entries when you are ready to add verified credentials. -->
-            <li><strong>[Add verified training or certification]</strong><span>[Issuing organisation] · [Completion date]</span></li>
-            <li><strong>[Add relevant professional development]</strong><span>[Programme or course] · [Status or date]</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="contact-panel">
-          <div>
-            <span class="eyebrow">Let's connect</span>
-            <h2>Have a workflow worth improving?</h2>
-            <p>If you're hiring, exploring a collaboration, or looking for practical automation support, I'd be glad to connect.</p>
-            <a class="button button-primary" href="https://www.linkedin.com/in/toluwalope-oluwadunsin-oluwasegun" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a>
-          </div>
-          <div class="contact-links">
-            <a class="contact-link" href="https://www.linkedin.com/in/toluwalope-oluwadunsin-oluwasegun" target="_blank" rel="noopener noreferrer"><div><span>LinkedIn</span><strong>View my profile</strong></div><span aria-hidden="true">↗</span></a>
-            <!-- TODO: Replace YOUR_GITHUB_USERNAME with your actual GitHub username. -->
-            <a class="contact-link" href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener noreferrer" data-placeholder-link="github"><div><span>GitHub</span><strong>Add your profile URL</strong></div><span aria-hidden="true">↗</span></a>
-            <!-- TODO: Replace the email address below before publishing. -->
-            <a class="contact-link" href="mailto:your.email@example.com" data-placeholder-link="email"><div><span>Email</span><strong>your.email@example.com</strong></div><span aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-        <p class="small-note" style="margin-top:14px">Email and GitHub are placeholders until you replace them. This page intentionally has no fake contact form; see the setup instructions to add a working form service if you need one.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span id="current-year">2026</span> Toluwalope Oluwasegun. Built with HTML, CSS, and JavaScript.</p>
-      <a class="back-top" href="#home">Back to top ↑</a>
+   <section class="section" id="training">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Learning & development</span>
+      <h2>Training and certifications.</h2>
+      <p>Relevant training and professional development.</p>
     </div>
-  </footer>
+
+    <div class="training-panel">
+      <div>
+        <h3>AI & Automation Track</h3>
+        <p>Cybervast · September 2026</p>
+        <a href="https://github.com/Tolu16-cloud/AI-automation-portfolio/blob/main/Certificate.pdf"
+           target="_blank" rel="noopener noreferrer">
+          View Certificate ↗
+        </a>
+      </div>
+
+      <ul class="editable-list">
+        <li>
+          <strong>AI Automation Internship</strong>
+          <span>Cybervast Ltd · November 2026 · In progress</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-panel">
+      <div>
+        <span class="eyebrow">Let's connect</span>
+        <h2>Have a workflow worth improving?</h2>
+        <p>If you're hiring, exploring a collaboration, or looking for practical automation support, I'd be glad to connect.</p>
+
+        <a class="button button-primary"
+           href="https://www.linkedin.com/in/toluwalope-oluwadunsin-oluwasegun"
+           target="_blank" rel="noopener noreferrer">
+          Connect on LinkedIn ↗
+        </a>
+      </div>
+
+      <div class="contact-links">
+        <a class="contact-link"
+           href="https://www.linkedin.com/in/toluwalope-oluwadunsin-oluwasegun"
+           target="_blank" rel="noopener noreferrer">
+          <div>
+            <span>LinkedIn</span>
+            <strong>View my profile</strong>
+          </div>
+          <span aria-hidden="true">↗</span>
+        </a>
+
+        <a class="contact-link" href="mailto:toluwalope120@gmail.com">
+          <div>
+            <span>Email</span>
+            <strong>toluwalope120@gmail.com</strong>
+          </div>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+       </div>
+</div>
+</section>
+</main>
 
   <script>
-    // Mobile navigation: open/close the menu and close it after choosing a section.
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navigation = document.querySelector('#primary-navigation');
+  // Mobile navigation
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navigation = document.querySelector('#primary-navigation');
 
-    menuToggle.addEventListener('click', () => {
-      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', String(!isOpen));
-      navigation.classList.toggle('is-open', !isOpen);
-      menuToggle.querySelector('.menu-label').textContent = isOpen ? 'Menu' : 'Close';
+  menuToggle.addEventListener('click', () => {
+    const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', String(!isOpen));
+    navigation.classList.toggle('is-open', !isOpen);
+    menuToggle.querySelector('.menu-label').textContent = isOpen ? 'Menu' : 'Close';
+  });
+
+  navigation.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      navigation.classList.remove('is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.querySelector('.menu-label').textContent = 'Menu';
     });
+  });
 
-    navigation.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        navigation.classList.remove('is-open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.querySelector('.menu-label').textContent = 'Menu';
-      });
+  // Project case studies
+  document.querySelectorAll('.case-toggle').forEach((button) => {
+    button.addEventListener('click', () => {
+      const card = button.closest('.project-card');
+      const details = card.querySelector('.case-study');
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+      button.setAttribute('aria-expanded', String(!isExpanded));
+      details.hidden = isExpanded;
+
+      button.innerHTML = isExpanded
+        ? 'View case study <span aria-hidden="true">＋</span>'
+        : 'Hide case study <span aria-hidden="true">−</span>';
     });
+  });
 
-    // Project case studies: each button expands or collapses its own details.
-    document.querySelectorAll('.case-toggle').forEach((button) => {
-      button.addEventListener('click', () => {
-        const card = button.closest('.project-card');
-        const details = card.querySelector('.case-study');
-        const isExpanded = button.getAttribute('aria-expanded') === 'true';
-        button.setAttribute('aria-expanded', String(!isExpanded));
-        details.hidden = isExpanded;
-        button.innerHTML = isExpanded
-          ? 'View case study <span aria-hidden="true">＋</span>'
-          : 'Hide case study <span aria-hidden="true">−</span>';
-      });
-    });
-
-    // Keep the footer year current automatically.
-    document.querySelector('#current-year').textContent = new Date().getFullYear();
-
-    // Guard against accidentally publishing placeholder links.
-    // Replace the TODO URLs/text in the HTML before launch.
-    document.querySelectorAll('[data-placeholder-link]').forEach((link) => {
-      link.addEventListener('click', (event) => {
-        const kind = link.dataset.placeholderLink;
-        const isPlaceholder = kind === 'github'
-          ? link.href.includes('YOUR_GITHUB_USERNAME')
-          : link.href.includes('your.email@example.com');
-        if (isPlaceholder) {
-          event.preventDefault();
-          alert(kind === 'github'
-            ? 'Add your real GitHub profile URL in index.html first.'
-            : 'Add your preferred professional email address in index.html first.');
-        }
-      });
-    });
-  </script>
+  // Automatically update the footer year
+  document.querySelector('#current-year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
