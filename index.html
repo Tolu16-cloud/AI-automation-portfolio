@@ -575,25 +575,66 @@
             </div>
           </article>
 
-          <article class="project-card">
-            <div class="project-top"><span class="project-icon" aria-hidden="true">⌘</span><span class="project-number">PROJECT 06</span></div>
-            <h3>Telegram AI Food Ordering Assistant</h3>
-            <p>A Telegram-based AI assistant designed to help customers ask questions and work through a food order for Tasty and Sweet Food Place.</p>
-            <ul class="tags" aria-label="Tools used"><li>n8n</li><li>Telegram</li><li>Groq LLM</li><li>HTML extraction</li><li>Conversational AI</li></ul>
-            <div class="project-actions"><button class="text-button case-toggle" type="button" aria-expanded="false">View case study <span aria-hidden="true">＋</span></button><a class="text-button repo-link" href="#contact" aria-label="Ask about the Telegram AI Food Ordering Assistant repository">Repository placeholder ↗</a></div>
-            <div class="case-study" hidden>
-              <h4>Problem</h4><p>Food businesses may need to respond to customer enquiries and collect complete order details consistently, without making unsupported promises about prices or payments.</p>
-              <h4>Solution</h4><p>An n8n workflow connects Telegram messages to an AI agent powered by Groq, then sends the agent's reply back to the customer in Telegram. The agent's instructions guide it to collect order details, summarize an order for customer approval, use only confirmed business information, and refer uncertain questions to the business owner.</p>
-              <h4>Implemented workflow components</h4><ul><li>Receive incoming Telegram messages.</li><li>Generate a conversational response with the AI agent and Groq chat model.</li><li>Connect a memory node to support conversational context.</li><li>Send the generated response back to the same Telegram chat.</li><li>A separate manual-trigger branch fetches a website and extracts its main page content; this branch is not connected to the Telegram agent in the supplied workflow.</li></ul>
-              <h4>Intended customer journey</h4><p>Customer message → AI-guided order conversation → order summary and customer approval → payment instructions and follow-up, with business-owner review where needed.</p>
-              <p class="small-note">The supplied workflow currently shows the Telegram conversation path and a separate website-extraction path. Payment verification, owner notifications, and order-status updates are described in the agent instructions but are not shown as connected automation nodes in this version.</p>
-              <img
-  src="AI-FOOD-ASSISTANT.png"
-  alt="Pinecone AI Food Assistant screenshot"
-  class="project-screenshot"
->
-            </div>
-          </article>
+<article class="project-card">
+  <div class="project-top"><span class="project-icon" aria-hidden="true">⌘</span><span class="project-number">PROJECT 06</span></div>
+
+  <h3>Telegram AI Food Ordering Assistant</h3>
+
+  <p>A Telegram-based AI food ordering assistant built with n8n and Groq, designed to help customers interact with Tasty and Sweet Food Place, make enquiries, and work through the ordering process.</p>
+
+  <ul class="tags" aria-label="Tools used">
+    <li>n8n</li>
+    <li>Telegram</li>
+    <li>Groq LLM</li>
+    <li>AI Agent</li>
+    <li>Conversation Memory</li>
+  </ul>
+
+  <div class="project-actions"><button class="text-button case-toggle" type="button" aria-expanded="false">View case study <span aria-hidden="true">＋</span></button><a class="text-button repo-link"
+   href="https://github.com/Tolu16-cloud/AI-automation-portfolio/blob/main/workflows/ai%20food%20assistant%20clean.json"
+   target="_blank"
+   rel="noopener noreferrer">
+   View Workflow JSON ↗
+</a></div>
+
+  <div class="case-study" hidden>
+    <h4>Problem</h4>
+    <p>Food businesses may need to respond to customer enquiries and collect complete order details consistently, while avoiding incorrect information about prices, payments, and delivery.</p>
+
+    <h4>Solution</h4>
+    <p>An n8n workflow connects incoming Telegram messages to an AI agent powered by Groq. The agent follows business-specific instructions to guide customers through order enquiries, collect relevant details, and send conversational responses back through Telegram.</p>
+
+    <h4>Implemented workflow components</h4>
+    <ul>
+      <li>Receive incoming customer messages through Telegram.</li>
+      <li>Process messages using an n8n AI Agent.</li>
+      <li>Use the Groq Chat Model (openai/gpt-oss-120b) to generate responses.</li>
+      <li>Connect a Simple Memory node with a context window of up to 20 messages.</li>
+      <li>Send the AI-generated response back to the customer's Telegram chat.</li>
+    </ul>
+
+    <h4>AI assistant instructions</h4>
+    <ul>
+      <li>Collect customer name, food choices, quantities, delivery address, phone number, and preferred delivery time.</li>
+      <li>Summarize orders and request customer confirmation.</li>
+      <li>Use only business-approved information for prices and payment instructions.</li>
+      <li>Never claim that payment has been confirmed without actual verification.</li>
+      <li>Refer unknown questions and matters requiring confirmation to the business owner.</li>
+    </ul>
+
+    <h4>Workflow summary</h4>
+    <p>Telegram message → AI Agent → Groq Chat Model and Simple Memory → generated response → Telegram reply.</p>
+
+    <p class="small-note">The exported workflow contains the Telegram conversation path and its AI components. Payment verification, order storage, owner notifications, and order-status updates are not yet connected as automation nodes.</p>
+
+    <img
+      src="AI-FOOD-ASSISTANT.png"
+      alt="Telegram AI Food Ordering Assistant workflow screenshot"
+      class="project-screenshot">
+</div>
+</article>
+
+
         </div>
         <p class="small-note" style="margin-top:20px">Project descriptions are based on the supplied project summaries. Add only tools, screenshots, repository links, and results you can verify. Remove any feature that is not yet implemented or tested.</p>
       </div>
